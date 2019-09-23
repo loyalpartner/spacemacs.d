@@ -30,7 +30,10 @@
 ;;; Code:
 
 (defconst custom-packages
-  '(keyfreq w3m)
+  '(keyfreq
+    w3m
+    lispy
+    )
   )
 
 (defun custom/init-keyfreq()
@@ -42,5 +45,15 @@
   (use-package w3m)
   )
 
+(defun custom/init-lispy ()
+  (use-package lispy
+    :defer t
+    :init
+    (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))))
 
+;; (defun custom/init-command-log()
+;;   (with-eval-after-load 'global-command-log-mode
+;;     (setq clm/log-command-exceptions* (append clm/log-command-exceptions*
+;;                                               '(evil-next-visual-line
+;;                                                 evil-previous-visual-line)))))
 ;;; packages.el ends here

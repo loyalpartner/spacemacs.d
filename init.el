@@ -50,6 +50,7 @@ This function should only modify configuration layer settings."
               ;; pyim-page-tooltip 'posframe
               chinese-enable-youdao-dict t)
      git
+     (python :variables)
      ;; helm
      ;; markdown
      ;; multiple-cursors
