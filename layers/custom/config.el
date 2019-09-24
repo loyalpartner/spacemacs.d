@@ -1,7 +1,9 @@
 ;;; escape setting
 (setq-default evil-escape-key-sequence "hh")
 (setq-default evil-escape-delay 0.3)
-
+;; 中文字典
+(setq pyim-dicts
+      '((:name "dict" :file "~/.spacemacs.d/dict/pyim-bigdict.pyim")))
 ;;; org mode
 (with-eval-after-load 'org
   ;; here goes your Org config :)
@@ -29,6 +31,7 @@
           ("J" "Work-Journal" entry (file+datetree "~/org/wjournal.org") "* %?\nEntered on %U\n %i\n %a")
           ("w" "Word" entry (file+headline "~/org/word.org" "Words") "* %?\n")
           ))
+
   (setq org-agenda-files
         (list
          "~/org/inbox.org"
@@ -36,8 +39,8 @@
          "~/org/email.org"
          "~/org/tasks.org"
          "~/org/wtasks.org"
-         "~/org/journal.org"
-         "~/org/wjournal.org"
+         ;; "~/org/journal.org"
+         ;; "~/org/wjournal.org"
          "~/org/kb.org"
          "~/org/wkb.org"
          ))
@@ -50,7 +53,7 @@
                              ("~/org/someday.org" :maxlevel . 2)
                              ("~/org/templates.org" :maxlevel . 2)
                              ))
-  (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
+  (setq org-outline-path-complete-in-steps nil) ; Refile in a single go
   (setq org-refile-use-outline-path 'file)
 
   ;; (setq org-tag-persistent-alist

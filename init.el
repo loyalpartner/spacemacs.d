@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -42,22 +42,28 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      ivy
      emacs-lisp
-     (auto-completion :variables
-                      auto-completion-enable-help-tooltip t
-                      auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t)
-     (chinese :variables
-              ;; pyim-page-tooltip 'posframe
-              chinese-enable-youdao-dict t)
+     (auto-completion
+      :variables auto-completion-enable-help-tooltip
+      t
+      auto-completion-enable-sort-by-usage
+      t
+      auto-completion-enable-snippets-in-popup
+      t)
+     (chinese
+      :variables ;; pyim-page-tooltip 'posframe
+      chinese-enable-youdao-dict
+      t)
      git
      (python :variables)
      ;; helm
      ;; markdown
-     ;; multiple-cursors
+     multiple-cursors
      org
-     (spacemacs-layouts :variables
-                        layouts-enable-autosave t
-                        layouts-autosave-delay 300)
+     (spacemacs-layouts
+      :variables layouts-enable-autosave
+      t
+      layouts-autosave-delay
+      300)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -68,12 +74,16 @@ This function should only modify configuration layer settings."
      ;;                 ispell-local-dictionary-alist '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))
      ;;                 ;; spell-checking-enable-auto-dictionary t
      ;;                 )
-     ;; syntax-checking
+     syntax-checking
      treemacs
      command-log
-     ;; version-control
-     custom
-     )
+     (version-control
+      :variables version-control-diff-tool
+      'git-gutter
+      version-control-diff-side
+      'left)
+     ;; gtags
+     custom)
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -492,8 +502,14 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq company-show-numbers t)
-  (spacemacs//set-monospaced-font   "SauceCodePro NF" "微软雅黑" 14 16)
+  ;; (spacemacs//set-monospaced-font   "SauceCodePro NF" "微软雅黑" 14 16)
   (setq inhibit-compacting-font-caches t)
+  ;; undo history
+  (setq undo-tree-auto-save-history t
+        undo-tree-history-directory-alist
+        `(("." . ,(concat spacemacs-cache-directory "undo"))))
+  (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
+    (make-directory (concat spacemacs-cache-directory "undo")))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
