@@ -6,8 +6,9 @@
 (with-eval-after-load 'org
   ;; here goes your Org config :)
   ;; ....
+  (setq org-log-done 'time)
   (setq org-default-notes-file "~/org/inbox.org")
-  (setq org-ellipsis "⤵")
+  ;; (setq org-ellipsis "⤵")
   (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
   (setq org-id-link-to-org-use-id 'create-if-interactive)
   (setq org-log-done 'time)
@@ -52,17 +53,17 @@
   (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
   (setq org-refile-use-outline-path 'file)
 
-  (setq org-tag-persistent-alist
-        '(("@phone" . ?p)
-          ("@computer" . ?c)
-          ("@websurfing" . ?w)
-          ("@errands" . ?e)
-          ("@outdoors" . ?o)
-          ("MIT" . ?m)
-          ("BIGROCK" . ?b)
-          ("CONTACTS" . ?C)
-          ("INBOX" . ?i)
-          ))
+  ;; (setq org-tag-persistent-alist
+  ;;       '(("@phone" . ?p)
+  ;;         ("@computer" . ?c)
+  ;;         ("@websurfing" . ?w)
+  ;;         ("@errands" . ?e)
+  ;;         ("@outdoors" . ?o)
+  ;;         ("MIT" . ?m)
+  ;;         ("BIGROCK" . ?b)
+  ;;         ("CONTACTS" . ?C)
+  ;;         ("INBOX" . ?i)
+  ;;         ))
 
   )
 

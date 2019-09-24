@@ -55,6 +55,9 @@ This function should only modify configuration layer settings."
      ;; markdown
      ;; multiple-cursors
      org
+     (spacemacs-layouts :variables
+                        layouts-enable-autosave t
+                        layouts-autosave-delay 300)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -67,6 +70,7 @@ This function should only modify configuration layer settings."
      ;;                 )
      ;; syntax-checking
      treemacs
+     command-log
      ;; version-control
      custom
      )
@@ -488,6 +492,8 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq company-show-numbers t)
+  (spacemacs//set-monospaced-font   "SauceCodePro NF" "微软雅黑" 14 16)
+  (setq inhibit-compacting-font-caches t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

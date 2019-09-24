@@ -37,7 +37,8 @@
   )
 
 (defun custom/init-keyfreq()
-  (use-package keyfreq)
+  ;; (use-package keyfreq)
+  (with-eval-after-load 'keyfreq-mode)
   (use-package youdao-dictionary)
   )
 

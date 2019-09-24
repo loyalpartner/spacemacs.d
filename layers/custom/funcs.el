@@ -14,6 +14,11 @@
     (evil-force-normal-state)))
 
 
+(defun avy-goto-word-fanyi ()
+  (interactive)
+  (avy-goto-word-or-subword-1)
+  (youdao-dictionary-search-at-point+))
+
 (defvar org-mobile-sync-timer nil)
 (defvar org-mobile-sync-idle-secs (* 60 10))
 
