@@ -32,14 +32,18 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(yaml
+   '(windows-scripts
+     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; auto-completion
-     ;; better-defaults
+     pdf
+     (better-defaults :variables
+                      better-defaults-move-to-beginning-of-code-first t
+                      better-defaults-move-to-end-of-code-first t)
      ivy
      emacs-lisp
      (auto-completion
@@ -83,6 +87,7 @@ This function should only modify configuration layer settings."
       version-control-diff-side
       'left)
      ;; gtags
+     w3m
      custom)
 
    ;; List of additional packages that will be installed without being

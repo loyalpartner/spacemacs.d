@@ -4,6 +4,11 @@
 ;; 中文字典
 (setq pyim-dicts
       '((:name "dict" :file "~/.spacemacs.d/dict/pyim-bigdict.pyim")))
+(with-eval-after-load 'company
+  (push
+   #'company-tabnine
+   company-backends))
+
 ;;; org mode
 (with-eval-after-load 'org
   ;; here goes your Org config :)
@@ -29,8 +34,7 @@
           ("i" "Inbox" entry (file "~/org/inbox.org") "* %U - %^{heading} %^g\n %?\n")
           ;; ("n" "Notes" entry (file "~/org/inbox.org") "* %^{heading} %t %^g\n  %?\n")
           ("J" "Work-Journal" entry (file+datetree "~/org/wjournal.org") "* %?\nEntered on %U\n %i\n %a")
-          ("w" "Word" entry (file+headline "~/org/word.org" "Words") "* %?\n")
-          ))
+          ("w" "Word" entry (file+headline "~/org/word.org" "Words") "* %?\n")))
 
   (setq org-agenda-files
         (list
@@ -42,8 +46,7 @@
          ;; "~/org/journal.org"
          ;; "~/org/wjournal.org"
          "~/org/kb.org"
-         "~/org/wkb.org"
-         ))
+         "~/org/wkb.org"))
 
   (setq org-agenda-text-search-extra-files
         (list "~/org/someday.org" "~/org/config.org"))
@@ -51,8 +54,8 @@
   (setq org-refile-targets '((nil :maxlevel . 2)
                              (org-agenda-files :maxlevel . 2)
                              ("~/org/someday.org" :maxlevel . 2)
-                             ("~/org/templates.org" :maxlevel . 2)
-                             ))
+                             ("~/org/templates.org" :maxlevel . 2)))
+
   (setq org-outline-path-complete-in-steps nil) ; Refile in a single go
   (setq org-refile-use-outline-path 'file)
 
@@ -95,7 +98,7 @@
         company-ignore
         delete-backward-char
         describe-variable
-        dired ; nothing to optimize in dired
+        dired                           ; nothing to optimize in dired
         dired-do-async-shell-command
         dired-find-file
         diredp-next-line
@@ -301,5 +304,4 @@
         yank
         yas-compile-directory
         yas-expand
-        yas-next-field-or-maybe-expand
-        ))
+        yas-next-field-or-maybe-expand))

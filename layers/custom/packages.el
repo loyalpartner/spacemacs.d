@@ -31,30 +31,26 @@
 
 (defconst custom-packages
   '(keyfreq
-    w3m
     lispy
     )
   )
 
 (defun custom/init-keyfreq()
-  ;; (use-package keyfreq)
-  (with-eval-after-load 'keyfreq-mode)
+  (use-package keyfreq)
   (use-package youdao-dictionary)
   )
 
-(defun custom/init-w3m()
-  (use-package w3m)
-  )
 
 (defun custom/init-lispy ()
   (use-package lispy
     :defer t
     :init
-    (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))))
+    (add-hook 'emacs-lisp-mode-hook
+             (lambda () ((lispy-mode 1)
+                (define-key evil-insert-state-map (kbd "<delete>") nil)
+                (define-key evil-insert-state-map (kbd "C-d") nil)
+                (define-key evil-insert-state-map (kbd "C-k") nil)
+                (define-key evil-insert-state-map (kbd "C-y") nil)
+                (define-key evil-insert-state-map (kbd "C-e") nil))))))
 
-;; (defun custom/init-command-log()
-;;   (with-eval-after-load 'global-command-log-mode
-;;     (setq clm/log-command-exceptions* (append clm/log-command-exceptions*
-;;                                               '(evil-next-visual-line
-;;                                                 evil-previous-visual-line)))))
 ;;; packages.el ends here
