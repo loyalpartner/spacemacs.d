@@ -14,6 +14,26 @@
     (evil-force-normal-state)))
 
 
+(defun create-word-card (word result)
+  (let ((fields `(("正面" . ,word)
+                  ("背面" . ,result))))
+    (anki-editor--push-note
+     `((deck . "word")
+       (note-id . -1)
+       (note-type . "basic")
+       (fields . ,fields)))))
+
+;; TODO 不处理中文
+(defun create-card-with-point-word ()
+  (interactive)
+  (let* ((string (thing-at-point 'word))
+        (result (youdao-dictionary--format-result string)))
+    (create-word-card string (replace-regexp-in-string "\n" "<br>" result))))
+
+(defalias 'cc 'create-card-with-point-word)
+(defalias 'fy 'youdao-dictionary-search-at-point+)
+
+
 (defun avy-goto-word-fanyi ()
   (interactive)
   (avy-goto-word-or-subword-1)

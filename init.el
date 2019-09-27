@@ -32,7 +32,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(windows-scripts
+   '(html
+     javascript
+     windows-scripts
      yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -62,12 +64,13 @@ This function should only modify configuration layer settings."
      ;; helm
      ;; markdown
      multiple-cursors
-     org
+     (org :variables
+          org-enable-org-journal-support t)
      (spacemacs-layouts
       :variables layouts-enable-autosave
       t
       layouts-autosave-delay
-      300)
+      900)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -87,6 +90,7 @@ This function should only modify configuration layer settings."
       version-control-diff-side
       'left)
      ;; gtags
+     chrome
      w3m
      custom)
 
@@ -239,8 +243,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("SauceCodePro NF"
-                               :size 10.0
+   dotspacemacs-default-font '("Sarasa Term TC"
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -414,7 +418,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server nil
+   dotspacemacs-enable-server t
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -507,14 +511,19 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq company-show-numbers t)
-  ;; (spacemacs//set-monospaced-font   "SauceCodePro NF" "微软雅黑" 14 16)
+  ;; (spacemacs//set-monospaced-font   "SauceCodePro NF" "Microsoft Yahei" 18 20)
   (setq inhibit-compacting-font-caches t)
-  ;; undo history
-  (setq undo-tree-auto-save-history t
-        undo-tree-history-directory-alist
-        `(("." . ,(concat spacemacs-cache-directory "undo"))))
-  (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
-    (make-directory (concat spacemacs-cache-directory "undo")))
+  ;; ;; undo history
+  ;; (setq undo-tree-auto-save-history t
+  ;;       undo-tree-history-directory-alist
+  ;;       `(("." . ,(concat spacemacs-cache-directory "undo"))))
+  ;; (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
+  ;;   (make-directory (concat spacemacs-cache-directory "undo")))
+  ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
+
+  (server-start)
+  ;; (add-to-list 'load-path "~/org/")
+  (require 'org-protocol)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

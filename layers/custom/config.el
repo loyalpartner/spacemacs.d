@@ -1,18 +1,16 @@
 ;;; escape setting
-(setq-default evil-escape-key-sequence "hh")
+(setq-default evil-escape-key-sequence "zz")
 (setq-default evil-escape-delay 0.3)
 ;; 中文字典
 (setq pyim-dicts
       '((:name "dict" :file "~/.spacemacs.d/dict/pyim-bigdict.pyim")))
-(with-eval-after-load 'company
-  (push
-   #'company-tabnine
-   company-backends))
 
 ;;; org mode
 (with-eval-after-load 'org
   ;; here goes your Org config :)
   ;; ....
+
+  ;; (add-to-list 'org-modules 'org-protocol)
   (setq org-log-done 'time)
   (setq org-default-notes-file "~/org/inbox.org")
   ;; (setq org-ellipsis "⤵")
@@ -21,20 +19,33 @@
   (setq org-log-done 'time)
   (setq org-agenda-start-on-weekday 0)
 
+
+  (setq org-journal-dir "~/org/journal/")
+
   (setq org-todo-keywords
         '((sequence "TODO(t!)" "NEXT(n!)" "STARTED(a!)" "WAIT(w@/!)" "OTHERS(o!)" "|" "DONE(d)" "CANCELLED(c)")))
 
+  ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
   (setq org-capture-templates
         '(("t" "Task")
           ("tw" "Work Task" entry (file+headline "~/org/tasks.org" "Work") "* TODO%^{任务名}\n%u\n%a\n" :clock-in t :clock-resume t)
           ("tr" "Book Reading Task" entry (file+olp "~/org/tasks.org" "Reading" "Book") "* TODO %^{书名}\n%u\n%a\n" :clock-in t :clock-resume t)
           ;; ("w" "Web Collections" entry (file+headline "~/org/inbox.org" "Web") "* %U %:annotation\n\n%:initial\n\n%?")
-          ("n" "Note/Data" entry (file+headline "~/org/inbox.org" "Notes/Data") "* %^{note}   %^g\n  %i\n  %u\n  %a")
+          ("N" "Note/Data" entry (file+headline "~/org/inbox.org" "Note") "* %:annotation \n\n  Source: %u \n\n %i\n\n " :immediate-finish 1) 
+          ("n" "Note/Data" entry (file+headline "~/org/inbox.org" "Note") "* %? \n\n  Source: %u \n\n %i\n\n " ) 
           ("j" "Journal" entry (file+datetree "~/org/journal.org") "* %U - %^{heading}\n  %?")
           ("i" "Inbox" entry (file "~/org/inbox.org") "* %U - %^{heading} %^g\n %?\n")
           ;; ("n" "Notes" entry (file "~/org/inbox.org") "* %^{heading} %t %^g\n  %?\n")
           ("J" "Work-Journal" entry (file+datetree "~/org/wjournal.org") "* %?\nEntered on %U\n %i\n %a")
+          ("W" "word" entry (file "~/org/word.org" ) "* %^{word}%i" :immediate-finish 1)
           ("w" "Word" entry (file+headline "~/org/word.org" "Words") "* %?\n")))
+  ;; (setq org-capture-templates
+  ;;       '(("t" "Todo" entry (file+headline "~/org/email.org" "Tasks")
+  ;;          "* TODO %?\n  %i\n  %a")
+  ;;         ("l" "Link" entry (file+olp "~/org/email.org" "Web Links")
+  ;;          "* %a\n %?\n %i")
+  ;;         ("j" "Journal" entry (file+datetree "/path/to/notes.org")
+  ;;          "* %?\nEntered on %U\n  %i\n  %a")))
 
   (setq org-agenda-files
         (list
