@@ -32,25 +32,29 @@
 (defconst custom-packages
   '(keyfreq
     lispy
+    anki-editor
     )
   )
 
-(defun custom/init-keyfreq()
+(defun custom/init-keyfreq ()
   (use-package keyfreq)
-  (use-package youdao-dictionary)
-  )
+  (use-package youdao-dictionary))
 
+(defun custom/init-anki-editor ()
+  (use-package anki-editor))
 
 (defun custom/init-lispy ()
   (use-package lispy
     :defer t
     :init
-    (add-hook 'emacs-lisp-mode-hook
-             (lambda () ((lispy-mode 1)
-                (define-key evil-insert-state-map (kbd "<delete>") nil)
-                (define-key evil-insert-state-map (kbd "C-d") nil)
-                (define-key evil-insert-state-map (kbd "C-k") nil)
-                (define-key evil-insert-state-map (kbd "C-y") nil)
-                (define-key evil-insert-state-map (kbd "C-e") nil))))))
+    (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+    :config
+    (progn
+      (define-key evil-insert-state-map (kbd "<delete>") nil)
+      (define-key evil-insert-state-map (kbd "C-d") nil)
+      (define-key evil-insert-state-map (kbd "C-k") nil)
+      (define-key evil-insert-state-map (kbd "C-y") nil)
+      (define-key evil-insert-state-map (kbd "C-e") nil))))
+
 
 ;;; packages.el ends here
