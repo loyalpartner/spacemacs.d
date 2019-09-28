@@ -47,9 +47,13 @@
   (use-package lispy
     :defer t
     :init
+<<<<<<< HEAD
     (progn
       (add-hook 'lisp-interaction-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
+=======
+    (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+>>>>>>> 74e0f2203c95dba27c660606a815c0bb548c324b
     :config
     (progn
       (define-key evil-insert-state-map (kbd "<delete>") nil)

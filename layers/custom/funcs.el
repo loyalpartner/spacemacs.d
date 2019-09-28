@@ -16,7 +16,11 @@
 
 (defun create-word-card (word result)
   (let ((fields `(("正面" . ,word)
+<<<<<<< HEAD
                   ("背面" . ,result))))
+=======
+                  ("反面" . ,result))))
+>>>>>>> 74e0f2203c95dba27c660606a815c0bb548c324b
     (anki-editor--push-note
      `((deck . "word")
        (note-id . -1)
@@ -26,12 +30,22 @@
 ;; TODO 不处理中文
 (defun create-card-with-point-word ()
   (interactive)
+<<<<<<< HEAD
   (let* ((string (thing-at-point 'word))
         (result (youdao-dictionary--format-result string)))
     (create-word-card string (replace-regexp-in-string "\n" "<br>" result))))
 
 (defalias 'cc 'create-card-with-point-word)
 (defalias 'fy 'youdao-dictionary-search-at-point+)
+=======
+  (let ((string (thing-at-point 'word)))
+    (let ((result (youdao-dictionary--format-result string)))
+      (popup-tip result)
+      (create-word-card string result))))
+
+(defalias 'cc 'create-card-with-point-word)
+(popup-tip "hello"dd)
+>>>>>>> 74e0f2203c95dba27c660606a815c0bb548c324b
 
 
 (defun avy-goto-word-fanyi ()
