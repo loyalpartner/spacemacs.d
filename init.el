@@ -519,11 +519,7 @@ before packages are loaded."
   ;;       `(("." . ,(concat spacemacs-cache-directory "undo"))))
   ;; (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
   ;;   (make-directory (concat spacemacs-cache-directory "undo")))
-<<<<<<< HEAD
   ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
-=======
-  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
->>>>>>> 74e0f2203c95dba27c660606a815c0bb548c324b
 
   (server-start)
   ;; (add-to-list 'load-path "~/org/")
