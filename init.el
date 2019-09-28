@@ -90,7 +90,7 @@ This function should only modify configuration layer settings."
       version-control-diff-side
       'left)
      ;; gtags
-     chrome
+     ;; chrome
      w3m
      custom)
 

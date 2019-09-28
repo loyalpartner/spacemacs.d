@@ -4,6 +4,8 @@
 ;; 中文字典
 (setq pyim-dicts
       '((:name "dict" :file "~/.spacemacs.d/dict/pyim-bigdict.pyim")))
+;; 双拼
+(setq pyim-default-scheme 'microsoft-shuangpin)
 
 ;;; org mode
 (with-eval-after-load 'org

@@ -33,8 +33,7 @@
   '(keyfreq
     lispy
     anki-editor
-    )
-  )
+    atomic-chrome))
 
 (defun custom/init-keyfreq ()
   (use-package keyfreq)
@@ -56,7 +55,12 @@
       (define-key evil-insert-state-map (kbd "C-d") nil)
       (define-key evil-insert-state-map (kbd "C-k") nil)
       (define-key evil-insert-state-map (kbd "C-y") nil)
-      (define-key evil-insert-state-map (kbd "C-e") nil))))
+      (define-key evil-insert-state-map (kbd "C-e") nil)
+      (define-key evil-insert-state-map (kbd "C-a") nil))))
 
+(defun custom/init-atomic-chrome ()
+  (use-package atomic-chrome
+    :config
+    (atomic-chrome-start-server)))
 
 ;;; packages.el ends here
