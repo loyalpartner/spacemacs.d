@@ -42,12 +42,6 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; auto-completion
-     pdf
-     (better-defaults :variables
-                      better-defaults-move-to-beginning-of-code-first t
-                      better-defaults-move-to-end-of-code-first t)
-     ivy
-     emacs-lisp
      (auto-completion
       :variables auto-completion-enable-help-tooltip
       t
@@ -55,12 +49,30 @@ This function should only modify configuration layer settings."
       t
       auto-completion-enable-snippets-in-popup
       t)
+     lsp
+     (python
+      ;; :variables
+      ;; python-backend 'lsp
+      ;; python-lsp-server 'mspyls
+      ;; python-lsp-git-root "~/python-language-server"
+      )
+     pdf
+     (better-defaults :variables
+                      better-defaults-move-to-beginning-of-code-first t
+                      better-defaults-move-to-end-of-code-first t)
+     ivy
+     emacs-lisp
      (chinese
       :variables ;; pyim-page-tooltip 'posframe
       chinese-enable-youdao-dict
       t)
-     git
-     (python :variables)
+     (git
+      git-magit-status-fullscreen t
+      magit-push-always-verify nil
+      magit-save-repository-buffers 'dontask
+      magit-revert-buffers 'silent
+      magit-refs-show-commit-count 'all
+      magit-revision-show-gravatars ni)
      ;; helm
      ;; markdown
      multiple-cursors
@@ -521,8 +533,7 @@ before packages are loaded."
   ;;   (make-directory (concat spacemacs-cache-directory "undo")))
   ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
 
-  (unless (server-running-p)
-    (server-start))
+  (server-start)
 
   ;; (add-to-list 'load-path "~/org/")
   (require 'org-protocol)

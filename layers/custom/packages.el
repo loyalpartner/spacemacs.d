@@ -83,7 +83,6 @@
     :config
     (defalias 'tce 'toggle-company-english-helper)))
 
-
 ;; (defun custom/init-company-tabnine ()
 ;;   (use-package company-tabnine :defer t))
 

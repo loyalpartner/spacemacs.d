@@ -1,5 +1,5 @@
 ;;; escape setting
-(setq-default evil-escape-key-sequence "hh")
+;; (setq-default evil-escape-key-sequence "hh")
 (setq-default evil-escape-delay 0.3)
 ;; 中文字典
 (setq pyim-dicts
