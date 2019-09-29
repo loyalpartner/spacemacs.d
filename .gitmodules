@@ -1,0 +1,6 @@
+[submodule "local/insert-translated-name"]
+	path = local/insert-translated-name
+	url = https://github.com/manateelazycat/insert-translated-name.git
+[submodule "local/company-english-helper"]
+	path = local/company-english-helper
+	url = https://github.com/manateelazycat/company-english-helper.git

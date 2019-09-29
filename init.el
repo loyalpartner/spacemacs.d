@@ -33,8 +33,8 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(html
-     javascript
-     windows-scripts
+     ;; javascript
+     ;; windows-scripts
      yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -82,7 +82,7 @@ This function should only modify configuration layer settings."
      ;;                 ;; spell-checking-enable-auto-dictionary t
      ;;                 )
      syntax-checking
-     treemacs
+     ;; treemacs
      command-log
      (version-control
       :variables version-control-diff-tool
@@ -429,7 +429,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
 
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
@@ -512,7 +512,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq company-show-numbers t)
   ;; (spacemacs//set-monospaced-font   "SauceCodePro NF" "Microsoft Yahei" 18 20)
-  (setq inhibit-compacting-font-caches t)
+  ;; (setq inhibit-compacting-font-caches t)
   ;; ;; undo history
   ;; (setq undo-tree-auto-save-history t
   ;;       undo-tree-history-directory-alist
@@ -521,7 +521,9 @@ before packages are loaded."
   ;;   (make-directory (concat spacemacs-cache-directory "undo")))
   ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
 
-  (server-start)
+  (unless (server-running-p)
+    (server-start))
+
   ;; (add-to-list 'load-path "~/org/")
   (require 'org-protocol)
   )

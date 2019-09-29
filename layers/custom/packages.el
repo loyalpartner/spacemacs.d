@@ -33,11 +33,16 @@
   '(keyfreq
     lispy
     anki-editor
-    atomic-chrome))
+    atomic-chrome
+    (insert-translated-name-insert :location local)
+    (company-english-helper :location local)
+    ;; (company-tabnine)
+    ))
 
 (defun custom/init-keyfreq ()
   (use-package keyfreq)
-  (use-package youdao-dictionary))
+  (use-package youdao-dictionary)
+  )
 
 (defun custom/init-anki-editor ()
   (use-package anki-editor))
@@ -62,5 +67,29 @@
   (use-package atomic-chrome
     :config
     (atomic-chrome-start-server)))
+
+;; ;; https://github.com/manateelazycat/insert-translated-name
+(defun custom/init-insert-translated-name-insert ()
+  (use-package insert-translated-name
+    :load-path
+    "~/.spacemacs.d/local/insert-translated-name"
+    :bind
+    (("C-=" . insert-translated-name-insert))))
+
+(defun custom/init-company-english-helper ()
+  (use-package company-english-helper
+    :load-path
+    "~/.spacemacs.d/local/company-english-helper"
+    :config
+    (defalias 'tce 'toggle-company-english-helper)))
+
+
+;; (defun custom/init-company-tabnine ()
+;;   (use-package company-tabnine :defer t))
+
+;; ;;; 配置company-tabnine作为company的后端
+;; (defun custom/post-init-company-tabnine ()
+;;   (with-eval-after-load 'company
+;;     (add-to-list 'company-backends #'company-tabnine)))
 
 ;;; packages.el ends here
